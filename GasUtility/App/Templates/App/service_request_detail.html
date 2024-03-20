@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Request Detail</title>
+</head>
+<body>
+    <h1>Service Request Detail</h1>
+    <p><strong>Name:</strong> {{ service_request.name }}</p>
+    <p><strong>Service Request:</strong> {{ service_request.service_request }}</p>
+    <p><strong>Status:</strong> {{ service_request.status }}</p>
+    <p><strong>Created At:</strong> {{ service_request.created_at }}</p>
+    <p><strong>Updated At:</strong> {{ service_request.updated_at }}</p>
+    <a href="{% url 'service_request_edit' service_request.pk %}">Edit</a>
+    <form action="{% url 'service_request_delete' service_request.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'service_request_list' %}">Back to Service Requests</a>
+</body>
+</html>
